@@ -3,7 +3,7 @@
 ## 🗂️ Project Structure
 
 ```bash
-bpjph/
+backend/
 │
 ├── app/
 │   ├── main.py        # Entry point for the FastAPI application
