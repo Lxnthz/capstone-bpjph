@@ -20,5 +20,6 @@ frontend/
 
 ## Depedencies
 
-- Tailwindcss
-- Vite React
+- tailwindcss/vite
+- react-router-dom
+- react-leafet
