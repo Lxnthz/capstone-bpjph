@@ -48,6 +48,11 @@ Before installing depedencies, make sure to enable Python Virtual Enviroment (ve
   pip install numpy scikit-learn torch
 ```
 
+#### Installing All Dependencies
+```bash
+  python -m pip install -r requirements.txt
+```
+
 ## 🚀 Running the Backend
 <p>To start the FastAPI backend with live reload:</p>
 
@@ -55,3 +60,7 @@ Before installing depedencies, make sure to enable Python Virtual Enviroment (ve
   uvicorn app.main:app --reload
 ```
 > This will serve the app locally at http://127.0.0.1:8000
+
+## Source Code
+
+GeoJSON - [https://github.com/ardian28/GeoJson-Indonesia-38-Provinsi]GeoJson-Indonesia-38-Provinsi
