@@ -10,6 +10,9 @@ backend/
 │   ├── model.py       # Handles loading and storing the ML model
 │   └── api.py         # API routes for inference
 │
+├── data/
+│   └── geojson/
+│
 ├── requirements.txt   # Python dependencies
 ├── be-documentation.md
 ├── .gitignore         # Prevent data leakages and high storage consumption
@@ -63,4 +66,4 @@ Before installing depedencies, make sure to enable Python Virtual Enviroment (ve
 
 ## Source Code
 
-GeoJSON - [https://github.com/ardian28/GeoJson-Indonesia-38-Provinsi]GeoJson-Indonesia-38-Provinsi
+[GeoJson](https://github.com/ardian28/GeoJson-Indonesia-38-Provinsi)
