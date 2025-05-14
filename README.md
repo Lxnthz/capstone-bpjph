@@ -28,6 +28,7 @@ Below are the core dependencies used in this project:
 - **[Tailwind CSS](https://tailwindcss.com/)** with **[Vite](https://vitejs.dev/)** — Utility-first CSS framework integrated into the build tool
 - **[React Router DOM](https://reactrouter.com/)** — For routing and navigation
 - **[React Leaflet](https://react-leaflet.js.org/)** — For interactive maps using Leaflet in React
+- **[React Icons](https://react-icons.github.io/react-icons/)** — For icons components
 
 To install all dependencies, run:
 
