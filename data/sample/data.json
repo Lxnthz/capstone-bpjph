@@ -1,0 +1,27 @@
+[
+  {
+    "province_name": "Jawa Barat",
+    "category": "Kosmetik",
+    "total": 350125
+  },
+  {
+    "province_name": "Jawa Tengah",
+    "category": "FnB",
+    "total": 276221
+  },
+  {
+    "province_name": "Jawa Timur",
+    "category": "Tekstil",
+    "total": 143328
+  },
+  {
+    "province_name": "DKI Jakarta",
+    "category": "FnB",
+    "total": 88358
+  },
+  {
+    "province_name": "Sumatera Barat",
+    "category": "Lainnya",
+    "total": 57236
+  }
+]

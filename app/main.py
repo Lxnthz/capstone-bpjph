@@ -22,3 +22,11 @@ def read_root():
 @app.get("/geo/province")
 def get_province():
   return FileResponse("data/geojson/indonesia38.geojson", media_type="application/json")
+
+@app.get("/geo/region")
+def get_all_region():
+  return FileResponse("data/geojson/indonesia-kab.geojson", media_type="application/json")
+
+@app.get("/data/sample")
+def get_sample():
+  return FileResponse("data/sample/data.json", media_type="application/json")
