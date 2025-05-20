@@ -23,7 +23,7 @@ export default function MapView() {
   const [popupInfo, setPopupInfo] = useState(null); // State to store popup info
 
   useEffect(() => {
-    fetch("http://localhost:8000/geo/province")
+    fetch("http://localhost:8000/geo/region")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch GeoJSON data");
@@ -40,7 +40,7 @@ export default function MapView() {
       click: (e) => {
         const { lat, lng } = e.latlng; // Get the latitude and longitude of the click
         setPopupInfo({
-          name: feature.properties.PROVINSI, // Province name
+          name: feature.properties.WADMKK, // Region name
           lat,
           lng,
         });
