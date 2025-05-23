@@ -8,10 +8,11 @@ export default function Piechart() {
         series={[
             {
             data: [
-                { id: 0, value: 10, label: 'series A' },
-                { id: 1, value: 15, label: 'series B' },
-                { id: 2, value: 20, label: 'series C' },
-                { id: 3, value: 50, label: 'series D' },
+                { id: 0, value: 30, label: 'FnB' },
+                { id: 1, value: 25, label: 'Kosmetik' },
+                { id: 2, value: 25, label: 'Obat' },
+                { id: 3, value: 10, label: 'Tekstil' },
+                { id: 4, value: 10, label: 'Lainnya' },
             ],
             },
         ]}

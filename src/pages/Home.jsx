@@ -14,24 +14,28 @@ export default function Home() {
 
       {/* atas */}
       <div className="bg-[#670075] flex justify-evenly rounded-xl items-center">
+        {/* total sertif */}
         <div className="text-white p-5 gap-y-2 -ml-10">
           <p className="font-[200] text-sm text-sm">Total sertifikat data</p>
           <p className="font-bold text-[1.5rem]">12455</p>
           <p className="font-[200] text-sm text-sm">12 marey 2020</p>
         </div>
         <div className="w-[0.5px] h-[60%] bg-white my-5 -translate-x-5"></div>
+        {/* Sertif terdata */}
         <div className="text-white p-5 gap-y-2 -ml-15">
           <p className="font-[200] text-sm text-sm ">Sertifikat data</p>
           <p className="font-bold text-[1.5rem]">2.047</p>
           <p className="font-[200] text-sm">Per bulan Maret 2025</p>
         </div>
         <div className="w-[0.5px] h-[60%] bg-white my-5"></div>
+        {/* Persentase Sertif */}
         <div className="text-white p-5 gap-y-2 -ml-10">
           <p className="font-[200] text-sm ">Persentase Sertifikat 2025</p>
           <p className="font-bold text-[1.5rem]">11%</p>
           <p className="font-[200] text-sm">Naik 34.000 Sertifikat Terdata</p>
         </div>
         <div className="w-[0.5px] h-[60%] bg-white my-5"></div>
+        {/* Top sektor */}
         <div className="text-white p-5 gap-y-2 -ml-10">
           <p className="font-[200] text-sm ">Top Sektor terverifikasi</p>
           <p className="font-bold text-[1.5rem]">FnB</p>
@@ -51,7 +55,7 @@ export default function Home() {
              <p className="text-xs text-gray-500 text-white flex items-center gap-x-3">Tahun <IoIosArrowDown /></p>
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full bg-red-500">
             <Barchart />
           </div>
         </div>
@@ -66,7 +70,7 @@ export default function Home() {
              <p className="text-xs text-gray-500 text-white flex items-center gap-x-3">Tahun <IoIosArrowDown /></p>
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full bg-red-500 flex justify-center items-center min-h-[300px]">
             <Piechart />
           </div>
         </div>
