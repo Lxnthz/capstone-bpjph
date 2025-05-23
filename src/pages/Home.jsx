@@ -55,7 +55,7 @@ export default function Home() {
              <p className="text-xs text-gray-500 text-white flex items-center gap-x-3">Tahun <IoIosArrowDown /></p>
             </div>
           </div>
-          <div className="w-full bg-red-500">
+          <div className="w-full">
             <Barchart />
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function Home() {
              <p className="text-xs text-gray-500 text-white flex items-center gap-x-3">Tahun <IoIosArrowDown /></p>
             </div>
           </div>
-          <div className="w-full bg-red-500 flex justify-center items-center min-h-[300px]">
+          <div className="w-full flex justify-center items-center min-h-[300px]">
             <Piechart />
           </div>
         </div>
