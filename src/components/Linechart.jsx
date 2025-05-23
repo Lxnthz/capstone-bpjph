@@ -4,10 +4,23 @@ import { LineChart } from '@mui/x-charts/LineChart';
 export default function Linechart() {
   return (
     <LineChart
-      xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+      className="-ml-5"
+      xAxis={[
+        {
+          scaleType: 'band',
+          data: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+        },
+      ]}
+      yAxis={[
+        {
+          min: 0,
+          valueFormatter: (value) => `${value / 1000}K`, // Format ke K
+        },
+      ]}
       series={[
         {
-          data: [2, 5.5, 2, 8.5, 1.5, 5],
+          data: [300000, 200000, 400000, 350000, 500000, 400000, 600000],
+          curve: 'linear', // <--- Tambahkan ini agar garis tidak melengkung
         },
       ]}
       height={300}

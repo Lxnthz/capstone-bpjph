@@ -1,5 +1,6 @@
 import MapView from "../components/MapView";
 import { useEffect, useState } from "react";
+import { VscListFlat } from "react-icons/vsc";
 
 export default function Geospatial() {
   const [tableData, setTableData] = useState([]);
@@ -23,7 +24,7 @@ export default function Geospatial() {
   return (
     <section className="flex flex-1 flex-col h-screen py-10 mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold">Geospatial Data</h1>
+        <h1 className="text-3xl font-bold flex items-center gap-2"> <VscListFlat /> Geospatial Data</h1>
       </div>
       <div className="">
         <MapView />

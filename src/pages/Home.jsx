@@ -86,15 +86,15 @@ export default function Home() {
                 <p className="font-bold text-lg">Berdasarkan Wilayah</p>
                 <p className="text-sm text-gray-500">Keterangan</p>
               </div>
-              <div className="ml-5">
-                <p className="font-bold text-md flex items-center"> <FaCircle className="w-2 mr-2"/> FnB</p>
-                <p className="font-bold text-md flex items-center"> <FaCircle className="w-2 mr-2" /> Kosmetik</p>
-                <p className="font-bold text-md flex items-center"> <FaCircle className="w-2 mr-2"/> Obat</p>
-                <p className="font-bold text-md flex items-center"> <FaCircle className="w-2 mr-2"/> Tekstil</p>
-                <p className="font-bold text-md flex items-center"> <FaCircle className="w-2 mr-2"/> Lainnya</p>
+              <div className="ml-5 mt-3">
+                <p className="text-md flex items-center"> <FaCircle className="w-2 mr-2 text-[#1565C0]"/> FnB</p>
+                <p className="text-md flex items-center"> <FaCircle className="w-2 mr-2 text-[#1E88E5]" /> Kosmetik</p>
+                <p className="text-md flex items-center"> <FaCircle className="w-2 mr-2 text-[#42A5F5]"/> Obat</p>
+                <p className="text-md flex items-center"> <FaCircle className="w-2 mr-2 text-[#7CABEE]"/> Tekstil</p>
+                <p className="text-md flex items-center"> <FaCircle className="w-2 mr-2 text-[#C6D2FD]"/> Lainnya</p>
               </div>
             </div>
-             <div className="w-full">
+             <div className="w-full -mt-5 ml-5">
                 <MapView />
               </div>
           </div>

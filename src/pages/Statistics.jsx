@@ -45,7 +45,7 @@ export default function Statistics() {
         </div>
       </div>
 
-      {/* Tengah */}
+      {/* Tengah kiri*/}
       <div className="flex justify-evenly mt-10 gap-x-5">
         <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
           <div className="flex flex-row justify-between w-full border-b border-gray-300">
@@ -62,6 +62,7 @@ export default function Statistics() {
           </div>
         </div>
 
+        {/* Tengah kanan */}
         <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
           <div className="flex flex-row justify-between w-full border-b border-gray-300">
             <div>
@@ -78,7 +79,7 @@ export default function Statistics() {
         </div>
       </div>
 
-      {/* Bawah */}
+      {/* Bawah kiri*/}
       <div className="flex justify-evenly mt-10 gap-x-5">
         <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
           <div className="flex flex-row justify-between w-full border-b border-gray-300">
@@ -92,14 +93,31 @@ export default function Statistics() {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col mx-auto"> 
-          <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
+        {/* bawah kanan */}
+        <div className="flex flex-col justify-between">
+          <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col justify-between">
             <div className="flex flex-row justify-between w-full">
-              <p> <GiTrophy className="w-10 bg-red-500" /> Sektor FnB Unggul dengan sertifikat terdata sebanyak </p>
+              <div>
+                <GiTrophy className="text-9xl text-[#FFC936] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-2"/>
+              </div>
+              <div className="mt-5 ml-5 mr-5">
+                <p className="text-lg">Sektor <span className="font-bold">FnB</span> unggul dengan</p>
+                <p className="text-lg">Sertifikat terdata terbanyak</p>
+                <p className="font-bold text-lg">480.000</p>
+              </div>
             </div>
           </div>
-          <div className="border-2 border-gray-300 p-5 rounded-lg mt-5 mb-5 shadow-lg flex-1 flex flex-col items-center justify-between">
-            <p>Statistik</p>
+          <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col justify-between mt-5">
+            <div className="flex flex-row justify-between w-full">
+              <div>
+                <GiTrophy className="text-9xl text-[#FFC936] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-2"/>
+              </div>
+              <div className="mt-5 ml-5 mr-5">
+                <p className="text-lg"> <span className="font-bold">Tahun</span> dengan Sertifikat</p>
+                <p className="text-lg"> <span className="font-bold">Terbanyak</span> adalah tahun</p>
+                <p className="text-lg"> <span className="font-bold">2022</span> dengan total <span className="font-bold">321.125</span></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
