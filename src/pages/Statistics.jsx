@@ -11,7 +11,7 @@ export default function Statistics() {
   return (
     <section className="flex flex-1 flex-col h-screen py-10 mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold flex items-center gap-2"> <VscListFlat /> Beranda</h1>
+        <h1 className="text-3xl font-bold flex items-center gap-2"> <VscListFlat /> Statistik</h1>
       </div>
 
       {/* atas */}
