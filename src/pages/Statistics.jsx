@@ -5,6 +5,7 @@ import MapView from "../components/MapView";
 import { FaCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import Linechart from "../components/Linechart";
+import { GiTrophy } from "react-icons/gi";
 
 export default function Statistics() {
   return (
@@ -91,18 +92,14 @@ export default function Statistics() {
           </div>
         </div>
 
-        <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
-          <div className="flex flex-row justify-between w-full border-b border-gray-300">
-            <div>
-              <p className="text-sm text-gray-500">Sertifikat</p>
-              <p className="font-bold text-lg">Statistik Time Series</p>
-            </div>
-            <div className="bg-[#670075] rounded-2xl p-2 h-fit">
-             <p className="text-xs text-gray-500 text-white flex items-center gap-x-3">Tahun <IoIosArrowDown /></p>
+        <div className="flex flex-1 flex-col mx-auto"> 
+          <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
+            <div className="flex flex-row justify-between w-full">
+              <p> <GiTrophy className="w-10 bg-red-500" /> Sektor FnB Unggul dengan sertifikat terdata sebanyak </p>
             </div>
           </div>
-          <div className="w-full flex justify-center items-center min-h-[300px]">
-            <Piechart />
+          <div className="border-2 border-gray-300 p-5 rounded-lg mt-5 mb-5 shadow-lg flex-1 flex flex-col items-center justify-between">
+            <p>Statistik</p>
           </div>
         </div>
       </div>
