@@ -27,11 +27,6 @@ export default function MainLayout() {
               <p className="align-middle flex items-center"><TbMap2 className="mr-2" /> Sebaran Geografis</p>
             </IconContext.Provider>
           </NavLink>
-          <NavLink to="/infographics" className={({ isActive }) => `block px-4 py-2 rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
-            <IconContext.Provider value={{ className: "mr-2", size: "1.5em" }} >
-              <p className="align-middle flex items-center"><TbInfoCircle className="mr-2" /> Infografis</p>
-            </IconContext.Provider>
-          </NavLink>
           <NavLink to="/prediction" className={({ isActive }) => `block px-4 py-2 rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
             <IconContext.Provider value={{ className: "mr-2", size: "1.5em" }} >
               <p className="align-middle flex items-center"><TbAlignBoxLeftTop className="mr-2" /> Visualisasi Prediksi</p>
