@@ -14,6 +14,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route path="Logo" element={<Home />} />
           <Route path="statistics" element={<Statistics />} />
           <Route path="Sebaran geografis" element={<Geospatial />} />
           <Route path="home" element={<Home />} />

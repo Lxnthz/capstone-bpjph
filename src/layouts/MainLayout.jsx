@@ -9,7 +9,11 @@ export default function MainLayout() {
       {/* Sidebar */}
       <aside className="w-[20%] bg-[#670075] text-white flex flex-col rounded-r-4xl">
         <div className="p-4 text-center font-bold text-xl border-b border-white flex justify-center">
-          <img src={BPJPHLogo} alt="Logo" className="" />
+          <NavLink to="Logo" className={({ isActive }) => `block px-4 py-2 rounded ${ isActive ? "" : "" }`}>
+            <IconContext.Provider value={{ className: "mr-2", size: "1.5em" }} >
+             <img src={BPJPHLogo} alt="Logo" className="" />
+            </IconContext.Provider>
+          </NavLink>
         </div>
         <nav className="flex-1 p-4 space-y-2">
           <NavLink to="/" className={({ isActive }) => `block px-4 py-2 rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
@@ -32,6 +36,7 @@ export default function MainLayout() {
               <p className="align-middle flex items-center"><TbAlignBoxLeftTop className="mr-2" /> Visualisasi Prediksi</p>
             </IconContext.Provider>
           </NavLink>
+          
         </nav>
         <div className="p-4 text-center text-xs flex flex-col justify-center items-center py-5 ">
           <p>© 2025 Badan Penyelenggara Jaminan Produk Halal</p>
