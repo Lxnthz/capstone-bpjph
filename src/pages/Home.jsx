@@ -34,7 +34,7 @@ export default function Home() {
         </div>
         <div className="h-[60%] border-l border-white border-dashed mx-5"></div>
         <div className="text-white p-5 gap-y-2 -ml-10">
-          <p className="font-[200] text-sm">Persentase Sertifikat 2025</p>
+          <p className="font-[200] text-sm">Persentase Sertifikat <span className="text-black bg-white rounded-2xl p-1 font-bold">2025</span></p>
           <p className="font-bold text-[1.5rem]">11%</p>
           <p className="font-[200] text-sm">Naik 34.000 Sertifikat Terdata</p>
         </div>
