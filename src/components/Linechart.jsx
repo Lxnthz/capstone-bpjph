@@ -21,6 +21,7 @@ export default function Linechart() {
         {
           data: [300000, 200000, 400000, 350000, 500000, 400000, 600000],
           curve: 'linear', // <--- Tambahkan ini agar garis tidak melengkung
+          showMark: false,
         },
       ]}
       height={300}
