@@ -14,15 +14,28 @@ export default function Geospatial() {
         return response.json();
       })
       .then((data) => {
-        const sortedData = data.sort((a, b) => b.total - a.total);
+        // Group by provinsi and jenis_produk, then count total per group
+        const provinceProductMap = {};
+        data.forEach((item) => {
+          const key = `${item.provinsi}|||${item.jenis_produk}`;
+          if (!provinceProductMap[key]) {
+            provinceProductMap[key] = {
+              provinsi: item.provinsi,
+              jenis_produk: item.jenis_produk,
+              total: 0,
+            };
+          }
+          provinceProductMap[key].total += 1;
+        });
+        // Convert to array and sort by total descending
+        const sortedData = Object.values(provinceProductMap).sort((a, b) => b.total - a.total);
         setTableData(sortedData);
-        console.log("Sample data:", sortedData); // delete later
       })
       .catch((error) => console.error("Error fetching sample data:", error));
   }, []);
 
   return (
-    <section className="flex flex-1 flex-col h-screen py-10 mx-auto">
+    <section className="flex flex-1 flex-col py-10 mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold flex items-center gap-2"> <VscListFlat /> Sebaran Geografis</h1>
       </div>
@@ -38,16 +51,16 @@ export default function Geospatial() {
               <tr>
                 <th className="px-4 py-2">No</th>
                 <th className="px-4 py-2">Provinsi</th>
-                <th className="px-4 py-2">Kategori</th>
+                <th className="px-4 py-2">Jenis Produk</th>
                 <th className="px-4 py-2">Total</th>
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {tableData.slice(0, 5).map((item, index) => (
                 <tr key={index} className="hover:bg-gray-100 text-center">
                   <td className="px-4 py-2">{index + 1}</td>
-                  <td className="px-4 py-2">{item.province_name}</td>
-                  <td className="px-4 py-2">{item.category}</td>
+                  <td className="px-4 py-2">{item.provinsi}</td>
+                  <td className="px-4 py-2">{item.jenis_produk}</td>
                   <td className="px-4 py-2">{item.total}</td>
                 </tr>
               ))}

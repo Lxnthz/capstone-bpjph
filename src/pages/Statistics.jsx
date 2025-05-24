@@ -2,13 +2,33 @@ import Barchart from "../components/Barchart";
 import Piechart from "../components/Piechart";
 import { VscListFlat } from "react-icons/vsc";
 import Linechart from "../components/Linechart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Thropy from "../assets/Trophy.png";
 import DropDown from "../components/DropDown";
 
 export default function Statistics() {
   const [barYear, setBarYear] = useState("Tahun");
   const [pieYear, setPieYear] = useState("Tahun");
+  const [totalSertifikat, setTotalSertifikat] = useState(null);
+  const [lastUpdate, setLastUpdate] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:8000/data/total")
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to fetch total data");
+        return response.json();
+      })
+      .then((data) => {
+        setTotalSertifikat(data.total);
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        setLastUpdate(today.toLocaleDateString('id-ID', options));
+      })
+      .catch(() => {
+        setTotalSertifikat("N/A");
+        setLastUpdate("");
+      });
+  }, []);
 
   return (
     <section className="flex flex-1 flex-col h-screen py-10 mx-auto">
@@ -21,9 +41,13 @@ export default function Statistics() {
       {/* atas */}
       <div className="bg-[#670075] flex justify-evenly rounded-xl items-center">
         <div className="text-white p-5 gap-y-2 -ml-5">
-          <p className="font-[200] text-sm">Total sertifikat data</p>
-          <p className="font-bold text-[1.5rem]">12.455</p>
-          <p className="font-[200] text-sm">12 Maret 2025</p>
+          <p className="font-[200] text-sm">Total Sertifikat Terdata</p>
+          <p className="font-bold text-[1.5rem]">
+            {totalSertifikat !== null ? totalSertifikat.toLocaleString() : "Loading..."}
+          </p>
+          <p className="font-[200] text-sm">
+            {lastUpdate ? lastUpdate : ""}
+          </p>
         </div>
         <div className="h-[60%] border-l border-white border-dashed mx-5 "></div>
         <div className="text-white p-5 gap-y-2 -ml-10">
