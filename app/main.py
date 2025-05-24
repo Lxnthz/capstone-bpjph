@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from app.api import router as api_router
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+import pandas as pd
 import os
 
 app = FastAPI(title="Backend")
@@ -29,4 +30,24 @@ def get_all_region():
 
 @app.get("/data/sample")
 def get_sample():
-  return FileResponse("data/sample/data.json", media_type="application/json")
+  df = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
+  df = df.where(pd.notnull(df), None)
+  return df.to_dict(orient="records")
+
+@app.get("/data/yearly")
+def get_total(year: int = Query(None, description="Filter by year")):
+    df = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
+    df = df.where(pd.notnull(df), None)
+    if year is not None and "tanggal_terbit" in df.columns:
+        # Convert tanggal_terbit to datetime and extract year
+        df["tanggal_terbit"] = pd.to_datetime(df["tanggal_terbit"], errors="coerce")
+        df = df[df["tanggal_terbit"].dt.year == year]
+    total = df.shape[0]
+    return {"total": total}
+
+@app.get("/data/total")
+def get_total_all():
+    df = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
+    df = df.where(pd.notnull(df), None)
+    total = df.shape[0]
+    return {"total": total}
