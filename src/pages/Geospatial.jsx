@@ -35,7 +35,7 @@ export default function Geospatial() {
   }, []);
 
   return (
-    <section className="flex flex-1 flex-col py-10 mx-auto">
+    <section className="flex flex-1 flex-col min-h-screen py-10 ">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold flex items-center gap-2"> <VscListFlat /> Sebaran Geografis</h1>
       </div>
