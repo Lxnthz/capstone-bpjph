@@ -4,6 +4,7 @@ import { VscListFlat } from "react-icons/vsc";
 import Linechart from "../components/Linechart";
 import { GiTrophy } from "react-icons/gi";
 import { useState } from "react";
+import Thropy from "../assets/Trophy.png";
 
 export default function Statistics() {
   const [barYear, setBarYear] = useState("Tahun");
@@ -121,11 +122,11 @@ export default function Statistics() {
         <div className="flex flex-col justify-evenly">
           {/* Card 1 */}
           <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col justify-between">
-            <div className="flex flex-row justify-between w-full">
+            <div className="flex flex-row justify-between w-full p-3">
               <div>
-                <GiTrophy className="text-9xl text-[#FFC936] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-2" />
+                <img src={Thropy} alt="logo" className="flex flex-row justify-between items-center w-[8rem] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-3" />
               </div>
-              <div className="mt-5 ml-5 mr-5 border-b border-gray-300">
+              <div className="mt-5 ml-5 mr-5 border-b border-gray-300 flex flex-col justify-center">
                 <p className="text-lg">Sektor <span className="font-bold">FnB</span> unggul dengan</p>
                 <p className="text-lg">Sertifikat terdata terbanyak</p>
                 <p className="font-bold text-lg">480.000</p>
@@ -137,7 +138,7 @@ export default function Statistics() {
           <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col justify-between mt-5">
             <div className="flex flex-row justify-between w-full">
               <div>
-                <GiTrophy className="text-9xl text-[#FFC936] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-2" />
+                <img src={Thropy} alt="logo" className="flex flex-row justify-between items-center w-[8rem] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-3" />
               </div>
               <div className="mt-5 ml-5 mr-5 border-b border-gray-300">
                 <p className="text-lg"> <span className="font-bold">Tahun</span> dengan Sertifikat</p>
