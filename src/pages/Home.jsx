@@ -1,4 +1,3 @@
-import { IoIosArrowDown } from "react-icons/io";
 import Barchart from "../components/Barchart";
 import Piechart from "../components/Piechart";
 import MapView from "../components/MapView";
