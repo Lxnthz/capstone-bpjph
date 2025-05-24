@@ -30,9 +30,9 @@ export default function Geospatial() {
         <MapView />
       </div>
       <div className="flex justify-evenly mt-10 gap-x-5">
-        <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1">
+        <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 ">
           <p className="text-gray-500 text-lg">Summary</p>
-          <h1 className="text-2xl font-bold mb-4">Papan Peringkat</h1>
+          <h1 className="text-2xl font-bold mb-4 border-b border-gray-300">Papan Peringkat</h1>
           <table className="table-auto w-full">
             <thead>
               <tr>
@@ -56,7 +56,7 @@ export default function Geospatial() {
         </div>
         <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1">
           <p className="text-gray-500 text-lg">Summary</p>
-          <h1 className="text-2xl font-bold mb-4">Jumlah Sertifikat per Pulau</h1>
+          <h1 className="text-2xl font-bold mb-4 border-b border-gray-300">Jumlah Sertifikat per Pulau</h1>
         </div>
       </div>
     </section>
