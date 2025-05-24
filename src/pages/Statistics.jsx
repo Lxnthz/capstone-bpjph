@@ -33,7 +33,7 @@ export default function Statistics() {
         </div>
         <div className="h-[60%] border-l border-white border-dashed mx-5"></div>
         <div className="text-white p-5 gap-y-2 -ml-10">
-          <p className="font-[200] text-sm">Persentase Sertifikat <span className="text-black bg-white rounded-2xl p-1 font-bold">2025</span></p>
+          <p className="font-[200] text-sm">Persentase Sertifikat <span className="text-[#670075] bg-white rounded-2xl p-1 font-bold">2025</span></p>
           <p className="font-bold text-[1.5rem]">11%</p>
           <p className="font-[200] text-sm">Naik 34.000 Sertifikat Terdata</p>
         </div>
@@ -113,11 +113,11 @@ export default function Statistics() {
 
           {/* Card 2 */}
           <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col justify-between mt-5">
-            <div className="flex flex-row justify-between w-full">
+            <div className="flex flex-row justify-between w-full p-3">
               <div>
                 <img src={Thropy} alt="logo" className="flex flex-row justify-between items-center w-[8rem] bg-[#F6F7FE] border-2 border-gray-300 rounded-2xl p-3" />
               </div>
-              <div className="mt-5 ml-5 mr-5 border-b border-gray-300">
+              <div className="mt-5 ml-5 mr-10 border-b border-gray-300 flex flex-col justify-center">
                 <p className="text-lg"> <span className="font-bold">Tahun</span> dengan Sertifikat</p>
                 <p className="text-lg"> <span className="font-bold">Terbanyak</span> adalah tahun</p>
                 <p className="text-lg"> <span className="font-bold">2022</span> dengan total <span className="font-bold">321.125</span></p>
