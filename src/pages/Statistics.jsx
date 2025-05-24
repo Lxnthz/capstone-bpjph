@@ -1,8 +1,5 @@
-import { IoIosArrowDown } from "react-icons/io";
 import Barchart from "../components/Barchart";
 import Piechart from "../components/Piechart";
-import MapView from "../components/MapView";
-import { FaCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import Linechart from "../components/Linechart";
 import { GiTrophy } from "react-icons/gi";
