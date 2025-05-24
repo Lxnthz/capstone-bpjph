@@ -10,7 +10,7 @@ export default function Barchart() {
         ]}
         yAxis={[
           {
-            valueFormatter: (value) => `${value / 1000}K`, // Ubah 200000 -> 200K
+            valueFormatter: (value) => `${value / 1000}K`,
           },
         ]}
         series={[

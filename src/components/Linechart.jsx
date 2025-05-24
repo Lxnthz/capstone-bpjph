@@ -14,13 +14,13 @@ export default function Linechart() {
       yAxis={[
         {
           min: 0,
-          valueFormatter: (value) => `${value / 1000}K`, // Format ke K
+          valueFormatter: (value) => `${value / 1000}K`,
         },
       ]}
       series={[
         {
           data: [300000, 200000, 400000, 350000, 500000, 400000, 600000],
-          curve: 'linear', // <--- Tambahkan ini agar garis tidak melengkung
+          curve: 'linear',
           showMark: false,
         },
       ]}
