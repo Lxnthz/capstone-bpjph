@@ -24,6 +24,14 @@ export default function Linechart() {
           showMark: false,
         },
       ]}
+      grid={{
+        horizontal: true,        // aktifkan garis horizontal
+      }}
+      sx={{
+          '& .MuiChartsGrid-line': {
+         strokeDasharray: '4 4',
+        },
+      }}
       height={300}
     />
   );

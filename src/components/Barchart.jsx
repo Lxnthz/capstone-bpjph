@@ -28,6 +28,14 @@ export default function Barchart() {
             },
           },
         }}
+        grid={{
+        horizontal: true,        // aktifkan garis horizontal
+      }}
+      sx={{
+          '& .MuiChartsGrid-line': {
+         strokeDasharray: '4 4',
+        },
+      }}
       />
     </div>
   );

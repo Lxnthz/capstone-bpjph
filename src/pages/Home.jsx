@@ -5,11 +5,11 @@ import MapView from "../components/MapView";
 import { FaCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import { useState } from "react";
+import DropDown from "../components/DropDown";
 
 export default function Home() {
   const [barYear, setBarYear] = useState("Tahun");
   const [pieYear, setPieYear] = useState("Tahun");
-  const years = ["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018"];
 
   return (
     <section className="flex flex-1 flex-col h-screen py-10 mx-auto">
@@ -23,7 +23,7 @@ export default function Home() {
       <div className="bg-[#670075] flex justify-evenly rounded-xl items-center">
         <div className="text-white p-5 gap-y-2 -ml-5">
           <p className="font-[200] text-sm">Total sertifikat data</p>
-          <p className="font-bold text-[1.5rem]">12455</p>
+          <p className="font-bold text-[1.5rem]">12.455</p>
           <p className="font-[200] text-sm">12 Maret 2025</p>
         </div>
         <div className="h-[60%] border-l border-white border-dashed mx-5 "></div>
@@ -55,19 +55,8 @@ export default function Home() {
               <p className="text-sm text-gray-500">Bar Chart</p>
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
-            <div className="bg-[#670075] rounded-2xl p-2 h-fit text-white">
-              <select
-                value={barYear}
-                onChange={(e) => setBarYear(e.target.value)}
-                className="bg-[#670075] text-white text-xs outline-none"
-              >
-                <option value="Tahun" className="text-black bg-[#D9D9D9]">Tahun</option>
-                {years.map((year) => (
-                  <option key={year} value={year} className="text-black bg-[#D9D9D9]">
-                    {year}
-                  </option>
-                ))}
-              </select>
+            <div className="">
+              <DropDown selectedYear={barYear} onChange={setBarYear} />
             </div>
           </div>
           <div className="w-full">
@@ -82,19 +71,8 @@ export default function Home() {
               <p className="text-sm text-gray-500">Pie Chart</p>
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
-            <div className="bg-[#670075] rounded-2xl p-2 h-fit text-white">
-              <select
-                value={pieYear}
-                onChange={(e) => setPieYear(e.target.value)}
-                className="bg-[#670075] text-white text-xs outline-none"
-              >
-                <option value="Tahun" className="text-black bg-[#D9D9D9]">Tahun</option>
-                {years.map((year) => (
-                  <option key={year} value={year} className="text-black bg-[#D9D9D9]">
-                    {year}
-                  </option>
-                ))}
-              </select>
+            <div className="">
+              <DropDown selectedYear={pieYear} onChange={setPieYear} />
             </div>
           </div>
           <div className="w-full flex justify-center items-center min-h-[300px]">
