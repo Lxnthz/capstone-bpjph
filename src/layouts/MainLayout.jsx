@@ -7,7 +7,7 @@ export default function MainLayout() {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-[25%] bg-[#670075] text-white flex flex-col rounded-r-3xl">
+      <aside className="w-[20%] bg-[#670075] text-white flex flex-col rounded-r-4xl">
         <div className="p-4 text-center font-bold text-xl border-b border-white flex justify-center">
           <img src={BPJPHLogo} alt="Logo" className="" />
         </div>
@@ -22,18 +22,18 @@ export default function MainLayout() {
               <p className="align-middle flex items-center"><TbCalendarStats className="mr-2" /> Statistik</p>
             </IconContext.Provider>
           </NavLink>
-          <NavLink to="/geospatial" className={({ isActive }) => `block px-4 py-2 items-center rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
+          <NavLink to="/Sebaran geografis" className={({ isActive }) => `block px-4 py-2 items-center rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
             <IconContext.Provider value={{ className: "mr-2", size: "1.5em" }} >
               <p className="align-middle flex items-center"><TbMap2 className="mr-2" /> Sebaran Geografis</p>
             </IconContext.Provider>
           </NavLink>
-          <NavLink to="/prediction" className={({ isActive }) => `block px-4 py-2 rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
+          <NavLink to="/visualization" className={({ isActive }) => `block px-4 py-2 rounded hover:bg-white hover:text-black ${ isActive ? "bg-white text-black" : "" }`}>
             <IconContext.Provider value={{ className: "mr-2", size: "1.5em" }} >
               <p className="align-middle flex items-center"><TbAlignBoxLeftTop className="mr-2" /> Visualisasi Prediksi</p>
             </IconContext.Provider>
           </NavLink>
         </nav>
-        <div className="p-4 text-center text-sm border-t border-white flex flex-col justify-center items-center py-7">
+        <div className="p-4 text-center text-xs flex flex-col justify-center items-center py-5 ">
           <p>© 2025 Badan Penyelenggara Jaminan Produk Halal</p>
           <p>In collaboration with IPB University</p>
         </div>

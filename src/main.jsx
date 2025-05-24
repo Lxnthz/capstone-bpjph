@@ -15,9 +15,9 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="statistics" element={<Statistics />} />
-          <Route path="geospatial" element={<Geospatial />} />
-          <Route path="infographics" element={<Home />} />
-          <Route path="prediction" element={<Visualisasi />} />
+          <Route path="Sebaran geografis" element={<Geospatial />} />
+          <Route path="home" element={<Home />} />
+          <Route path="visualization" element={<Visualisasi />} />
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
