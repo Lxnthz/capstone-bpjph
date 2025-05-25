@@ -10,11 +10,14 @@ export default function Piechart() {
     { id: 4, value: 50000, label: 'Lainnya' },
   ];
 
+  const colors = ['#1565C0', '#1E88E5', '#42A5F5', '#7CABEE', '#E5EAFC'];
+
   const total = originalData.reduce((sum, item) => sum + item.value, 0);
 
-  const dataWithPercent = originalData.map((item) => ({
+  const dataWithPercent = originalData.map((item, index) => ({
     ...item,
     label: `${item.label} (${((item.value / total) * 100).toFixed(1)}%)`,
+    color: colors[index],
   }));
 
   return (
