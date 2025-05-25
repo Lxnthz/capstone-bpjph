@@ -29,7 +29,7 @@ export default function Barchart() {
           },
         }}
         grid={{
-        horizontal: true,        // aktifkan garis horizontal
+        horizontal: true,        
       }}
       sx={{
           '& .MuiChartsGrid-line': {

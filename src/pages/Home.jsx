@@ -1,10 +1,9 @@
-import Barchart from "../components/Barchart";
-import Piechart from "../components/Piechart";
+import Barchart from "../components/BarchartHome";
+import Piechart from "../components/Piecharthome";
 import MapView from "../components/MapView";
 import { FaCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import { useState } from "react";
-import DropDown from "../components/DropDown";
 
 export default function Home() {
   const [barYear, setBarYear] = useState("Tahun");
@@ -55,7 +54,7 @@ export default function Home() {
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
             <div className="">
-              <DropDown selectedYear={barYear} onChange={setBarYear} />
+              <p className="text-md">2020-2025</p>
             </div>
           </div>
           <div className="w-full">
@@ -71,7 +70,7 @@ export default function Home() {
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
             <div className="">
-              <DropDown selectedYear={pieYear} onChange={setPieYear} />
+              <p className="text-md">2020-2025</p>
             </div>
           </div>
           <div className="w-full flex justify-center items-center">

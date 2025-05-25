@@ -1,5 +1,5 @@
-import Barchart from "../components/Barchart";
-import Piechart from "../components/Piechart";
+import Barchart from "../components/BarchartStat";
+import Piechart from "../components/Piechartstat";
 import { VscListFlat } from "react-icons/vsc";
 import Linechart from "../components/Linechart";
 import { useState } from "react";
