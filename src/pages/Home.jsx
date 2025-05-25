@@ -80,7 +80,7 @@ export default function Home() {
       </div>
 
       {/* Bawah */}
-      <div className="flex justify-evenly mt-10 gap-x-5">
+      <div className="flex justify-evenly mt-10 pb-10 gap-x-5">
         <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
           <div className="flex flex-row w-full">
             <div className="flex flex-col w-[20%]">
