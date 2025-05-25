@@ -53,8 +53,8 @@ export default function Home() {
               <p className="text-sm text-gray-500">Bar Chart</p>
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
-            <div className="">
-              <p className="text-md">2020-2025</p>
+            <div className="flex justify-between items-center">
+              <p className="text-xs text-white bg-[#670075] rounded-xl px-2 py-2 w-fit">2020 - 2025</p>
             </div>
           </div>
           <div className="w-full">
@@ -69,8 +69,8 @@ export default function Home() {
               <p className="text-sm text-gray-500">Pie Chart</p>
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
-            <div className="">
-              <p className="text-md">2020-2025</p>
+            <div className="flex justify-between items-center">
+              <p className="text-xs text-white bg-[#670075] rounded-xl px-2 py-2 w-fit">2020 - 2025</p>
             </div>
           </div>
           <div className="w-full flex justify-center items-center">

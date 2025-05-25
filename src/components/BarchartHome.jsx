@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function Barchart() {
+export default function BarchartHome() {
   return (
     <div className="flex items-center">
       <BarChart
         xAxis={[
-          { data: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'] },
+          { data: ['2020', '2021', '2022', '2023', '2024', '2025'] },
         ]}
         yAxis={[
           {

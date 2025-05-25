@@ -4,12 +4,15 @@ import { VscListFlat } from "react-icons/vsc";
 import Linechart from "../components/Linechart";
 import { useState } from "react";
 import Thropy from "../assets/Trophy.png";
-import DropDown from "../components/DropDown";
+import DropDownBar from "../components/DropDownBar";
+import DropDownPie from "../components/DropDownPie";
+import DropDownLine from "../components/DropDownLine";
 import Summary from "../components/Summary";
 
 export default function Statistics() {
   const [barYear, setBarYear] = useState("Tahun");
   const [pieYear, setPieYear] = useState("Tahun");
+  const [lineCategory, setLineCategory] = useState("Kategori");
   
 
   return (
@@ -32,7 +35,7 @@ export default function Statistics() {
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
             <div className="">
-              <DropDown selectedYear={barYear} onChange={setBarYear} />
+              <DropDownBar selectedYear={barYear} onChange={setBarYear} />
             </div>
           </div>
           <div className="w-full">
@@ -48,7 +51,7 @@ export default function Statistics() {
               <p className="font-bold text-lg">Statistik Time Series</p>
             </div>
             <div className="">
-              <DropDown selectedYear={pieYear} onChange={setPieYear} />
+              <DropDownPie selectedYear={pieYear} onChange={setPieYear} />
             </div>
           </div>
           <div className="w-full flex justify-center items-center min-h-[300px]">
@@ -65,6 +68,9 @@ export default function Statistics() {
             <div>
               <p className="text-sm text-gray-500">Line Chart</p>
               <p className="font-bold text-lg">Statistik Time Series</p>
+            </div>
+            <div className="">
+              <DropDownLine selectedCategory={lineCategory} onChange={setLineCategory}/>
             </div>
           </div>
           <div className="w-full">

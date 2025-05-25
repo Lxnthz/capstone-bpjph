@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function Barchart() {
+export default function BarchartStat() {
   return (
     <div className="flex items-center">
       <BarChart

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 
-export default function Piechart() {
+export default function Piechartstat() {
   const originalData = [
     { id: 0, value: 20000, label: 'FnB' },
     { id: 1, value: 100000, label: 'Kosmetik' },
