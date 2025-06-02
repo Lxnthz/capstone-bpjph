@@ -63,7 +63,7 @@ export default function Statistics() {
       {/* Bawah */}
       <div className="flex justify-evenly mt-10 pb-10 gap-x-5">
         {/* Line Chart */}
-        <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col items-center justify-between">
+        <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-2/3 flex flex-col items-center justify-between">
           <div className="flex flex-row justify-between w-full border-b border-gray-300">
             <div>
               <p className="text-sm text-gray-500">Line Chart</p>
@@ -79,7 +79,7 @@ export default function Statistics() {
         </div>
 
         {/* Card */}
-        <div className="flex flex-col justify-evenly">
+        <div className="flex flex-col justify-evenly flex-1/3">
           {/* Card 1 */}
           <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 flex flex-col justify-between">
             <div className="flex flex-row justify-between w-full p-3">

@@ -1,6 +1,7 @@
 import Barchart from "../components/BarchartHome";
 import Piechart from "../components/Piecharthome";
 import MapView from "../components/MapView";
+import Summary from "../components/Summary";
 import { FaCircle } from "react-icons/fa";
 import { VscListFlat } from "react-icons/vsc";
 import { useState } from "react";
@@ -16,33 +17,9 @@ export default function Home() {
           <VscListFlat /> Beranda
         </h1>
       </div>
-
-      {/* atas */}
-      <div className="bg-[#670075] flex justify-evenly rounded-xl items-center">
-        <div className="text-white p-5 gap-y-2 -ml-5">
-          <p className="font-[200] text-sm">Total sertifikat data</p>
-          <p className="font-bold text-[1.5rem]">12.455</p>
-          <p className="font-[200] text-sm">12 Maret 2025</p>
-        </div>
-        <div className="h-[60%] border-l border-white border-dashed mx-5 "></div>
-        <div className="text-white p-5 gap-y-2 -ml-10">
-          <p className="font-[200] text-sm">Sertifikat data</p>
-          <p className="font-bold text-[1.5rem]">2.047</p>
-          <p className="font-[200] text-sm">Per bulan Maret 2025</p>
-        </div>
-        <div className="h-[60%] border-l border-white border-dashed mx-5"></div>
-        <div className="text-white p-5 gap-y-2 -ml-10">
-          <p className="font-[200] text-sm">Persentase Sertifikat <span className="text-[#670075] bg-white rounded-2xl p-1 font-bold">2025</span></p>
-          <p className="font-bold text-[1.5rem]">11%</p>
-          <p className="font-[200] text-sm">Naik 34.000 Sertifikat Terdata</p>
-        </div>
-        <div className="h-[60%] border-l border-white border-dashed mx-5"></div>
-        <div className="text-white p-5 gap-y-2 -ml-10">
-          <p className="font-[200] text-sm">Top Sektor terverifikasi</p>
-          <p className="font-bold text-[1.5rem]">FnB</p>
-          <p className="font-[200] text-sm">985.321 Sertifikat</p>
-        </div>
-      </div>
+      
+      {/* Atas */}
+      <Summary />
 
       {/* Tengah */}
       <div className="flex justify-evenly mt-10 gap-x-5">
