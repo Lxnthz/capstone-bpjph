@@ -28,18 +28,13 @@ def get_province():
 def get_all_region():
   return FileResponse("data/geojson/indonesia-kab.geojson", media_type="application/json")
 
-@app.get("/data/sample")
-def get_sample():
-  df = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
-  df = df.where(pd.notnull(df), None)
-  return df.to_dict(orient="records")
+df_cache = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
+df_cache = df_cache.where(pd.notnull(df_cache), None)
 
 @app.get("/data/yearly")
 def get_total(year: int = Query(None, description="Filter by year")):
-    df = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
-    df = df.where(pd.notnull(df), None)
+    df = df_cache.copy()
     if year is not None and "tanggal_terbit" in df.columns:
-        # Convert tanggal_terbit to datetime and extract year
         df["tanggal_terbit"] = pd.to_datetime(df["tanggal_terbit"], errors="coerce")
         df = df[df["tanggal_terbit"].dt.year == year]
     total = df.shape[0]
@@ -47,7 +42,10 @@ def get_total(year: int = Query(None, description="Filter by year")):
 
 @app.get("/data/total")
 def get_total_all():
-    df = pd.read_excel("data/xlsx/data_sh_ipb.xlsx")
-    df = df.where(pd.notnull(df), None)
-    total = df.shape[0]
+    total = df_cache.shape[0]
     return {"total": total}
+  
+@app.get("/data/sector")
+def get_top_sector():
+    top_sector = df_cache["kbli"].value_counts().head(10).to_dict()
+    return {"top_sector": top_sector}
