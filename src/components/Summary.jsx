@@ -53,7 +53,7 @@ export default function Summary() {
   }, []);
 
   return (
-    <div className="bg-[#670075] flex justify-evenly rounded-xl items-center">
+    <div className="bg-[#670075] flex justify-evenly rounded-xl items-center mt-4">
       {/* Column 1 */}
       <div className="text-white p-5 gap-y-2 -ml-5">
         <p className="font-[200] text-sm">Total Sertifikat Terdata</p>
@@ -102,7 +102,7 @@ export default function Summary() {
 
       {/* Column 4 */}
       <div className="text-white p-5 gap-y-2 -ml-10">
-        <p className="font-[200] text-sm">Top Sektor terverifikasi</p>
+        <p className="font-[200] text-sm">Kategori KBLI Tertinggi</p>
         <p className="font-bold text-[1.5rem]">
           {sektorTertinggi != null
             ? Array.isArray(Object.keys(sektorTertinggi)) &&
