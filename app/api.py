@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, FastAPI, HTTPException
 from pydantic import BaseModel
 from app.model import load_model, model
 
@@ -14,7 +14,9 @@ def startup_event():
 @router.post("/predict")
 def predict(request: PredictionRequest):
     if model is None:
-        return {"error": "Model not loaded"}
-    
-    prediction = model.predict([request.data])
-    return {"prediction": prediction.tolist()}
+        raise HTTPException(status_code=500, detail="Model not loaded")
+    try:
+        prediction = model.predict([request.input_data])
+        return {"prediction": prediction.tolist()}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

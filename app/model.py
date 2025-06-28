@@ -1,10 +1,10 @@
-import joblib
+import tensorflow as tf
 
-PATH = "app/model/model-path"
+PATH = "data/model/halal_lstm_model.h5"
 
 model = None # type: ignore
 
 def load_model():
-  global model
-  # model = joblib.load(PATH)
-  return model
+    global model
+    model = tf.keras.models.load_model(PATH)
+    return model
