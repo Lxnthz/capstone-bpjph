@@ -1,6 +1,6 @@
-import MapView from "../components/MapView";
 import { useEffect, useState } from "react";
 import { VscListFlat } from "react-icons/vsc";
+import MapView from "../components/MapView";
 
 export default function Geospatial() {
   const [tableData, setTableData] = useState([]);
@@ -14,30 +14,18 @@ export default function Geospatial() {
         return response.json();
       })
       .then((data) => {
-        // Group by provinsi and jenis_produk, then count total per group
-        const provinceProductMap = {};
-        data.forEach((item) => {
-          const key = `${item.provinsi}|||${item.jenis_produk}`;
-          if (!provinceProductMap[key]) {
-            provinceProductMap[key] = {
-              provinsi: item.provinsi,
-              jenis_produk: item.jenis_produk,
-              total: 0,
-            };
-          }
-          provinceProductMap[key].total += 1;
-        });
-        // Convert to array and sort by total descending
-        const sortedData = Object.values(provinceProductMap).sort(
-          (a, b) => b.total - a.total
-        );
-        setTableData(sortedData);
+        // Use the aggregated data returned by the API directly
+        const sampleData = data.data;
+        if (!Array.isArray(sampleData)) {
+          throw new TypeError("Expected an array for sample data");
+        }
+        setTableData(sampleData);
       })
       .catch((error) => console.error("Error fetching sample data:", error));
   }, []);
 
   return (
-    <section className="flex flex-1 flex-col h-screen py-10 mx-auto ">
+    <section className="flex flex-1 flex-col h-screen py-10 mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold flex items-center gap-2 z-10">
           <VscListFlat /> Sebaran Geografis
@@ -45,7 +33,7 @@ export default function Geospatial() {
       </div>
       <div>
         <div className="flex justify-evenly mt-4 gap-x-5">
-          <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1 ">
+          <div className="border-2 border-gray-300 p-5 rounded-lg shadow-lg flex-1">
             <p className="text-gray-500 text-lg">Summary</p>
             <h1 className="text-2xl font-bold mb-4 border-b border-gray-300">
               Papan Peringkat
@@ -76,6 +64,7 @@ export default function Geospatial() {
             <h1 className="text-2xl font-bold mb-4 border-b border-gray-300">
               Jumlah Sertifikat per Pulau
             </h1>
+            {/* Additional data or components can go here */}
           </div>
         </div>
         <div className="flex-1/2">
