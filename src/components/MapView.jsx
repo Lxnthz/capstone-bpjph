@@ -85,7 +85,7 @@ export default function MapView() {
   };
 
   return (
-    <div className="h-fit w-full bg-gray-100 mt-5 p-2 rounded-lg shadow-lg border-2 border-gray-300">
+    <div className="h-fit w-full bg-gray-100 p-2 rounded-lg shadow-lg border-2 border-gray-300">
       <div className="w-full aspect-[3/1]">
         <MapContainer center={[-2.5, 117.5]} zoom={5} scrollWheelZoom={true} className="h-full w-full">
           <LayersControl position="topright">

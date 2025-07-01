@@ -3,25 +3,36 @@ import { VscListFlat } from "react-icons/vsc";
 import MapView from "../components/MapView";
 
 export default function Geospatial() {
-  const [tableData, setTableData] = useState([]);
+  const [leaderboardData, setLeaderboardData] = useState([]);
+  const [islandData, setIslandData] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:8000/data/sample")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch sample data");
+    const fetchLeaderboardData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/data/leaderboard");
+        const result = await response.json();
+        if (result.data) {
+          setLeaderboardData(result.data);
         }
-        return response.json();
-      })
-      .then((data) => {
-        // Use the aggregated data returned by the API directly
-        const sampleData = data.data;
-        if (!Array.isArray(sampleData)) {
-          throw new TypeError("Expected an array for sample data");
+      } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+      }
+    };
+
+    const fetchIslandData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/data/island-certificates");
+        const result = await response.json();
+        if (result.data) {
+          setIslandData(result.data);
         }
-        setTableData(sampleData);
-      })
-      .catch((error) => console.error("Error fetching sample data:", error));
+      } catch (error) {
+        console.error("Error fetching island data:", error);
+      }
+    };
+
+    fetchLeaderboardData();
+    fetchIslandData();
   }, []);
 
   return (
@@ -48,7 +59,7 @@ export default function Geospatial() {
                 </tr>
               </thead>
               <tbody>
-                {tableData.slice(0, 5).map((item, index) => (
+                {leaderboardData.slice(0, 7).map((item, index) => (
                   <tr key={index} className="hover:bg-gray-100 text-center">
                     <td className="px-4 py-2">{index + 1}</td>
                     <td className="px-4 py-2">{item.provinsi}</td>
@@ -64,10 +75,25 @@ export default function Geospatial() {
             <h1 className="text-2xl font-bold mb-4 border-b border-gray-300">
               Jumlah Sertifikat per Pulau
             </h1>
-            {/* Additional data or components can go here */}
+            <table className="table-auto w-full">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2">Pulau</th>
+                  <th className="px-4 py-2">Total Sertifikat</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(islandData).map(([island, total], index) => (
+                  <tr key={index} className="hover:bg-gray-100 text-center">
+                    <td className="px-4 py-2">{island}</td>
+                    <td className="px-4 py-2">{total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="flex-1/2">
+        <div className="flex-1/2 mt-5">
           <MapView />
         </div>
       </div>
