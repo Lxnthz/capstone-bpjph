@@ -11,6 +11,7 @@ backend/
 │   └── api.py         # API routes for inference
 │
 ├── data/
+│   ├── sertifikat/
 │   └── geojson/
 │
 ├── requirements.txt   # Python dependencies

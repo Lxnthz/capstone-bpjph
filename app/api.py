@@ -7,10 +7,6 @@ router = APIRouter()
 class PredictionRequest(BaseModel):
     data: list[float]
     
-@router.on_event("startup")
-def startup_event():
-    load_model()
-    
 @router.post("/predict")
 def predict(request: PredictionRequest):
     if model is None:
