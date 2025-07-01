@@ -1,25 +1,24 @@
 import * as React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 
-export default function Linechart() {
+export default function Linechart({ data }) {
+  if (!Array.isArray(data)) {
+    console.error("Expected data to be an array, but got:", data);
+    return <p>Error: Invalid data format</p>;
+  }
+
   return (
     <LineChart
       xAxis={[
         {
           scaleType: 'linear',
-          data: [0, 50, 100, 150, 200, 250, 300, 350],
+          data: Array.from({ length: data.length }, (_, i) => i + 1), // Days
         },
       ]}
-      yAxis={[{ min: 120 }]}
+      yAxis={[{ label: 'Jumlah Sertifikat' }]}
       series={[
         {
-          data: [200, 250, 200, 145, 150, 225, 260, 195],
-          label: 'Aktual',
-          color: '#2196F3',
-          showMark: false,
-        },
-        {
-          data: [205, 245, 205, 150, 155, 220, 270, 190],
+          data: data,
           label: 'Prediksi',
           color: '#FFEB3B',
           lineDash: [4, 4],
@@ -33,7 +32,6 @@ export default function Linechart() {
           strokeDasharray: '4 4',
         },
       }}
-      legend={{ position: { vertical: 'bottom', horizontal: 'middle' } }}
     />
   );
 }

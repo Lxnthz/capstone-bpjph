@@ -6,6 +6,11 @@ export default function Predict() {
   const [error, setError] = useState(null);
 
   const handlePredict = async () => {
+    if (inputData.length !== 56) {
+      setError("Input must contain exactly 56 values (7 days * 8 features).");
+      return;
+    }
+
     try {
       const response = await fetch("http://127.0.0.1:8000/predict", {
         method: "POST",
@@ -16,8 +21,8 @@ export default function Predict() {
       });
 
       const result = await response.json();
-      if (result.error) {
-        setError(result.error);
+      if (result.detail) {
+        setError(result.detail);
       } else {
         setPrediction(result.prediction);
         setError(null);
@@ -50,7 +55,7 @@ export default function Predict() {
       {prediction && (
         <div className="mt-4">
           <h2 className="text-xl font-bold">Prediction:</h2>
-          <p>{prediction.join(", ")}</p>
+          <p>{prediction}</p>
         </div>
       )}
     </div>

@@ -1,36 +1,69 @@
-import * as React from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
+import React, { useEffect, useState } from "react";
+import { LineChart } from "@mui/x-charts/LineChart";
 
-export default function Linechart() {
+export default function Linechart({ selectedCategory }) {
+  const [yearlyData, setYearlyData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `http://localhost:8000/data/kbli/category?category=${selectedCategory}`
+        );
+        const result = await response.json();
+        if (result.category_data) {
+          const data = Object.entries(result.category_data).map(([year, count]) => ({
+            year: parseInt(year, 10),
+            count,
+          }));
+          setYearlyData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching category data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (selectedCategory) {
+      fetchCategoryData();
+    }
+  }, [selectedCategory]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <LineChart
-      className="-ml-5"
       xAxis={[
         {
-          scaleType: 'band',
-          data: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+          scaleType: "band",
+          data: yearlyData.map((item) => item.year),
         },
       ]}
       yAxis={[
         {
           min: 0,
-          valueFormatter: (value) => `${value / 1000}K`,
+          valueFormatter: (value) => `${value}`,
         },
       ]}
       series={[
         {
-          data: [300000, 200000, 400000, 350000, 500000, 400000, 600000],
-          curve: 'linear',
+          data: yearlyData.map((item) => item.count),
+          curve: "linear",
           showMark: false,
-          color: '#8BA0EA',
+          color: "#8BA0EA",
         },
       ]}
       grid={{
-        horizontal: true,        // aktifkan garis horizontal
+        horizontal: true,
       }}
       sx={{
-          '& .MuiChartsGrid-line': {
-         strokeDasharray: '4 4',
+        "& .MuiChartsGrid-line": {
+          strokeDasharray: "4 4",
         },
       }}
       height={300}

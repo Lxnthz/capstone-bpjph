@@ -15,23 +15,27 @@ export default function Summary() {
       try {
         const [currentRes, prevRes] = await Promise.all([
           axios.get(`http://localhost:8000/data/yearly?year=${currentYear}`),
-          axios.get(
-            `http://localhost:8000/data/yearly?year=${currentYear - 1}`
-          ),
+          axios.get(`http://localhost:8000/data/yearly?year=${currentYear - 1}`),
         ]);
         const currentTotal = currentRes.data.total;
         const prevTotal = prevRes.data.total;
+
+        console.log("Current Year Total:", currentTotal); // Debugging log
+        console.log("Previous Year Total:", prevTotal); // Debugging log
+
         setTotalSertifikatTahunan(currentTotal);
         const today = new Date();
         const options = { year: "numeric", month: "long", day: "numeric" };
         setLastUpdate(today.toLocaleDateString("id-ID", options));
-        if (prevTotal && currentTotal) {
+
+        if (prevTotal === 0 || !prevTotal) {
+          setPersentase(null);
+        } else {
           const percent = ((currentTotal - prevTotal) / prevTotal) * 100;
           setPersentase(percent.toFixed(2));
-        } else {
-          setPersentase(null);
         }
-      } catch {
+      } catch (error) {
+        console.error("Error fetching yearly data:", error); // Debugging log
         setTotalSertifikatTahunan("N/A");
         setLastUpdate("");
         setPersentase(null);

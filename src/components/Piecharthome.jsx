@@ -1,23 +1,30 @@
-import * as React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
+import React, { useEffect, useState } from "react";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 export default function Piecharthome() {
-  const originalData = [
-    { id: 0, value: 100000, label: 'FnB' },
-    { id: 1, value: 200000, label: 'Kosmetik' },
-    { id: 2, value: 400000, label: 'Obat' },
-    { id: 3, value: 250000, label: 'Tekstil' },
-    { id: 4, value: 50000, label: 'Lainnya' },
-  ];
+  const [kbliData, setKbliData] = useState([]);
 
-  const colors = ['#1565C0', '#1E88E5', '#42A5F5', '#7CABEE', '#E5EAFC'];
+  useEffect(() => {
+    const fetchKbliData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/data/kbli/home");
+        const result = await response.json();
+        if (result.kbli_data_home) {
+          setKbliData(result.kbli_data_home);
+        }
+      } catch (error) {
+        console.error("Error fetching KBLI data for home:", error);
+      }
+    };
 
-  const total = originalData.reduce((sum, item) => sum + item.value, 0);
+    fetchKbliData();
+  }, []);
 
-  const dataWithPercent = originalData.map((item, index) => ({
+  // Calculate percentages for the pie chart
+  const total = kbliData.reduce((sum, item) => sum + item.value, 0);
+  const dataWithPercent = kbliData.map((item) => ({
     ...item,
     label: `${item.label} (${((item.value / total) * 100).toFixed(1)}%)`,
-    color: colors[index],
   }));
 
   return (

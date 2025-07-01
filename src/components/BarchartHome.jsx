@@ -1,41 +1,49 @@
-import * as React from 'react';
-import { BarChart } from '@mui/x-charts/BarChart';
+import React, { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts/BarChart";
 
 export default function BarchartHome() {
+  const [yearlyData, setYearlyData] = useState([]);
+
+  useEffect(() => {
+    const fetchYearlyData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/data/yearly/home");
+        const result = await response.json();
+        if (result.yearly_data_home) {
+          const data = Object.entries(result.yearly_data_home).map(
+            ([year, count]) => ({
+              year,
+              count,
+            })
+          );
+          setYearlyData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching yearly data for home:", error);
+      }
+    };
+
+    fetchYearlyData();
+  }, []);
+
   return (
     <div className="flex items-center">
       <BarChart
-        xAxis={[
-          { data: ['2020', '2021', '2022', '2023', '2024', '2025'] },
-        ]}
-        yAxis={[
-          {
-            valueFormatter: (value) => `${value / 1000}K`,
-          },
-        ]}
+        xAxis={[{ data: yearlyData.map((item) => item.year) }]}
+        yAxis={[{ label: "Jumlah Sertifikat" }]}
         series={[
           {
-            data: [250000, 200000, 300000, 400000, 500000, 600000, 700000],
-            color: '#42A5F5',
+            data: yearlyData.map((item) => item.count),
+            color: "#42A5F5",
           },
         ]}
         height={300}
-        slotProps={{
-          bar: {
-            style: {
-              rx: 3,
-              ry: 3,
-            },
+        grid={{ horizontal: true }}
+        sx={{
+          "& .MuiChartsGrid-line": {
+            strokeDasharray: "4 4",
           },
         }}
-        grid={{
-        horizontal: true,        
-      }}
-      sx={{
-          '& .MuiChartsGrid-line': {
-         strokeDasharray: '4 4',
-        },
-      }}
       />
     </div>
   );

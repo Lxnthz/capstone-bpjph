@@ -1,10 +1,29 @@
 // src/components/CategoryDropdown.jsx
-import { Listbox } from '@headlessui/react';
-import { IoIosArrowDown } from 'react-icons/io';
+import { Listbox } from "@headlessui/react";
+import { IoIosArrowDown } from "react-icons/io";
+import React, { useEffect, useState } from "react";
 
-const categories = ["FnB", "Kosmetik", "Obat", "Tekstil", "Lainnya"];
+export default function DropdownLine({ selectedCategory = "10710", onChange }) {
+  const [categories, setCategories] = useState([]);
 
-export default function CategoryDropdown({ selectedCategory, onChange }) {
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/data/kbli/categories"
+        );
+        const result = await response.json();
+        if (result.categories) {
+          setCategories(result.categories);
+        }
+      } catch (error) {
+        console.error("Error fetching KBLI categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="relative w-32 justify-between">
       <Listbox value={selectedCategory} onChange={onChange}>
@@ -20,10 +39,9 @@ export default function CategoryDropdown({ selectedCategory, onChange }) {
                 value={category}
                 className={({ active }) =>
                   `cursor-pointer select-none px-4 py-2 ${
-                    active ? 'bg-[#670075] text-white' : 'text-gray-900'
+                    active ? "bg-[#670075] text-white" : "text-gray-900"
                   }`
-                }
-              >
+                }>
                 {category}
               </Listbox.Option>
             ))}

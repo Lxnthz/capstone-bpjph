@@ -1,41 +1,68 @@
-import * as React from 'react';
-import { BarChart } from '@mui/x-charts/BarChart';
+import React, { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts/BarChart";
 
-export default function BarchartStat() {
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "Mei",
+  "Jun",
+  "Jul",
+  "Agt",
+  "Sep",
+  "Okt",
+  "Nov",
+  "Des",
+];
+
+export default function BarchartStat({ selectedYear }) {
+  const [monthlyData, setMonthlyData] = useState([]);
+
+  useEffect(() => {
+    const fetchMonthlyData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/data/monthly?year=${selectedYear}`
+        );
+        const result = await response.json();
+        if (result.monthly_data) {
+          const data = Object.entries(result.monthly_data).map(
+            ([month, count]) => ({
+              month: monthNames[month - 1], // Map month number to localized name
+              count,
+            })
+          );
+          setMonthlyData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching monthly data:", error);
+      }
+    };
+
+    if (selectedYear) {
+      fetchMonthlyData();
+    }
+  }, [selectedYear]);
+
   return (
     <div className="flex items-center">
       <BarChart
-        xAxis={[
-          { data: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'] },
-        ]}
-        yAxis={[
-          {
-            valueFormatter: (value) => `${value / 1000}K`,
-          },
-        ]}
+        xAxis={[{ data: monthlyData.map((item) => item.month) }]}
+        yAxis={[{ label: "Jumlah Sertifikat" }]}
         series={[
           {
-            data: [250000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1100000, 1200000],
-            color: '#42A5F5',
+            data: monthlyData.map((item) => item.count),
+            color: "#42A5F5",
           },
         ]}
         height={300}
-        slotProps={{
-          bar: {
-            style: {
-              rx: 3,
-              ry: 3,
-            },
+        grid={{ horizontal: true }}
+        sx={{
+          "& .MuiChartsGrid-line": {
+            strokeDasharray: "4 4",
           },
         }}
-        grid={{
-        horizontal: true,        // aktifkan garis horizontal
-      }}
-      sx={{
-          '& .MuiChartsGrid-line': {
-         strokeDasharray: '4 4',
-        },
-      }}
       />
     </div>
   );
