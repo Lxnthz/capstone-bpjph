@@ -329,3 +329,63 @@ def get_kbli_categories():
     except Exception as e:
         logger.error(f"Error fetching KBLI categories: {e}")
         return {"error": str(e)}
+
+@app.get("/data/leaderboard")
+def get_leaderboard():
+    """
+    Returns leaderboard data for provinces with product types and totals.
+    """
+    try:
+        df = df_cache.copy()
+        leaderboard_data = (
+            df.groupby(["provinsi", "jenis_produk"])
+            .size()
+            .reset_index(name="total")
+            .sort_values(by="total", ascending=False)
+        )
+        return {"data": leaderboard_data.to_dict(orient="records")}
+    except Exception as e:
+        logger.error(f"Error fetching leaderboard data: {e}")
+        return {"error": str(e)}
+
+@app.get("/data/island-certificates")
+def get_island_certificates():
+    """
+    Returns the total certificates per island based on provinces.
+    """
+    try:
+        df = df_cache.copy()
+        island_mapping = {
+            "Sumatra": [
+                "Aceh", "North Sumatra", "West Sumatra", "Riau", "Jambi",
+                "South Sumatra", "Bengkulu", "Lampung", "Bangka Belitung Islands", "Riau Islands"
+            ],
+            "Java": [
+                "Banten", "DKI Jakarta", "Jawa Barat", "Jawa Tengah", "DI Yogyakarta", "Jawa Timur"
+            ],
+            "Kalimantan": [
+                "Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara"
+            ],
+            "Sulawesi": [
+                "Sulawesi Utara", "Gorontalo", "Sulawesi Tengah", "Sulawesi Barat", "Sulawesi Selatan", "Sulawesi Tenggara"
+            ],
+            "Papua": [
+                "Papua", "Papua Barat", "Papua Tengah", "Papua Selatan", "Papua Barat Daya"
+            ],
+            "Nusa Tenggara": [
+                "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur"
+            ],
+            "Maluku": [
+                "Maluku", "Maluku Utara"
+            ]
+        }
+
+        island_certificates = {}
+        for island, provinces in island_mapping.items():
+            total = df[df["provinsi"].isin(provinces)].shape[0]
+            island_certificates[island] = total
+
+        return {"data": island_certificates}
+    except Exception as e:
+        logger.error(f"Error fetching island certificates: {e}")
+        return {"error": str(e)}
