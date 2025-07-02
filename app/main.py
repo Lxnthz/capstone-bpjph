@@ -252,6 +252,54 @@ def predict(data: dict):
         logger.error(f"Error during prediction: {e}")
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
+@app.post("/predict/auto")
+def predict_auto():
+    global model, scaler, target_scaler
+
+    logger.info("Received auto prediction request.")
+    try:
+        if model is None or scaler is None or target_scaler is None:
+            raise HTTPException(
+                status_code=500,
+                detail="Model or scalers are not loaded. Please ensure load_model() is called."
+            )
+
+        # Load the data from data_predict.csv
+        df = pd.read_csv("data/csv/data_predict.csv")
+        df["date"] = pd.to_datetime(df["date"])
+        df = df.sort_values(by="date", ascending=False)
+
+        # Fetch the last 7 days of data
+        last_7_days = df.head(7)
+
+        if last_7_days.shape[0] < 7:
+            raise HTTPException(
+                status_code=422,
+                detail="Insufficient data for the last 7 days."
+            )
+
+        # Extract the required features (8 features per day)
+        input_data = last_7_days.iloc[:, 1:9].values.flatten().tolist()
+
+        # Preprocess the input data
+        processed_input = preprocess_input(input_data)
+
+        # Predict for 7 days forward
+        predictions = []
+        for _ in range(7):  # Predict 7 days forward
+            pred_scaled = model.predict(processed_input)
+            prediction = target_scaler.inverse_transform(pred_scaled)
+            predictions.append(float(prediction[0][0]))  # Ensure each prediction is a float
+
+            # Update input_data with the new prediction for the next day
+            input_data = input_data[8:] + prediction.flatten().tolist()
+
+        logger.info(f"Final prediction response: {predictions}")
+        return {"predictions": predictions}
+    except Exception as e:
+        logger.error(f"Error during auto prediction: {e}")
+        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+
 @app.get("/data/kbli")
 def get_kbli_data(year: int):
     """
