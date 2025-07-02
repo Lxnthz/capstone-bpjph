@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
+import React from "react";
+import { LineChart } from "@mui/x-charts/LineChart";
 
 export default function Linechart({ data }) {
   if (!Array.isArray(data)) {
@@ -11,16 +11,16 @@ export default function Linechart({ data }) {
     <LineChart
       xAxis={[
         {
-          scaleType: 'linear',
-          data: Array.from({ length: data.length }, (_, i) => i + 1), // Days
+          scaleType: "linear",
+          data: Array.from({ length: data.length }, (_, i) => i + 1), // Days (1 to 7)
         },
       ]}
-      yAxis={[{ label: 'Jumlah Sertifikat' }]}
+      yAxis={[{ label: "Jumlah Sertifikat" }]}
       series={[
         {
           data: data,
-          label: 'Prediksi',
-          color: '#FFEB3B',
+          label: "Prediksi",
+          color: "#FFEB3B",
           lineDash: [4, 4],
           showMark: false,
         },
@@ -28,8 +28,8 @@ export default function Linechart({ data }) {
       grid={{ horizontal: true }}
       height={300}
       sx={{
-        '& .MuiChartsGrid-line': {
-          strokeDasharray: '4 4',
+        "& .MuiChartsGrid-line": {
+          strokeDasharray: "4 4",
         },
       }}
     />
