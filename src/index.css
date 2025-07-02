@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+/* Gunakan :root untuk mendefinisikan custom properties (CSS variables) */
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+* {
+  font-family: var(--font-outfit);
+}
